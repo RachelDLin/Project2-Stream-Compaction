@@ -19,7 +19,19 @@ namespace StreamCompaction {
          */
         void scan(int n, int *odata, const int *idata) {
             timer().startCpuTimer();
-            // TODO
+
+            // check size of idata to avoid accessing a null reference
+            if (n == 0) {
+                return;
+            }
+            
+            // compute exclusive prefix sum (ignore last element)
+            odata[0] = 0;
+
+            for (int i = 1; i < n; i++) {
+                odata[i] = odata[i - 1] + idata[i - 1];
+            }
+
             timer().endCpuTimer();
         }
 
@@ -30,9 +42,20 @@ namespace StreamCompaction {
          */
         int compactWithoutScan(int n, int *odata, const int *idata) {
             timer().startCpuTimer();
-            // TODO
+            
+            // number of elements remaining
+            int numElems = 0;
+            
+            // compaction
+            for (int i = 0; i < n; i++) {
+                if (idata[i] != 0) {
+                    odata[numElems] = idata[i];
+                    numElems++;
+                }
+            }
+
             timer().endCpuTimer();
-            return -1;
+            return numElems;
         }
 
         /**
@@ -42,9 +65,39 @@ namespace StreamCompaction {
          */
         int compactWithScan(int n, int *odata, const int *idata) {
             timer().startCpuTimer();
-            // TODO
+
+            // temporary array to indicate the element should be kept/discarded
+            int* isValid = new int[n];
+            for (int i = 0; i < n; i++) {
+                isValid[i] = 0;
+                if (idata[i] != 0) {
+                    isValid[i] = 1;
+                } 
+            }
+
+            // exclusive prefix sum scan on temp array
+            // represents the index in odata that i in idata should be mapped to
+            int* indices = new int[n];
+            scan(n, indices, isValid);
+
+            // number of elements remaining
+            int numElems = 0;
+
+            // scatter
+            for (int i = 0; i < n; i++) {
+                if (isValid[i] == 1) {
+                    int idx = indices[i];
+                    odata[idx] = idata[i];
+                    numElems++;
+                }
+            }
+
             timer().endCpuTimer();
-            return -1;
+
+            delete[] isValid;
+            delete[] indices;
+
+            return numElems;
         }
     }
 }
