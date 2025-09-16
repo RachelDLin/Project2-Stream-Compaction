@@ -20,7 +20,7 @@ namespace StreamCompaction {
         void scan(int n, int *odata, const int *idata) {
             timer().startCpuTimer();
 
-            // check size of idata to avoid accessing a null reference
+            // check size of idata
             if (n == 0) {
                 return;
             }
@@ -68,6 +68,7 @@ namespace StreamCompaction {
 
             // temporary array to indicate the element should be kept/discarded
             int* isValid = new int[n];
+            
             for (int i = 0; i < n; i++) {
                 isValid[i] = 0;
                 if (idata[i] != 0) {
@@ -78,7 +79,13 @@ namespace StreamCompaction {
             // exclusive prefix sum scan on temp array
             // represents the index in odata that i in idata should be mapped to
             int* indices = new int[n];
-            scan(n, indices, isValid);
+            
+            // compute exclusive prefix sum (ignore last element)
+            indices[0] = 0;
+
+            for (int i = 1; i < n; i++) {
+                indices[i] = indices[i - 1] + isValid[i - 1];
+            }
 
             // number of elements remaining
             int numElems = 0;
