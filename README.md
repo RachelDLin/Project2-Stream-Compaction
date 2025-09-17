@@ -1,14 +1,19 @@
 CUDA Stream Compaction
 ======================
 
-**University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 2**
+**University of Pennsylvania, CIS 565: GPU Programming and Architecture,
+Project 2 - Stream Compaction**
 
-* (TODO) YOUR NAME HERE
-  * (TODO) [LinkedIn](), [personal website](), [twitter](), etc.
-* Tested on: (TODO) Windows 22, i7-2222 @ 2.22GHz 22GB, GTX 222 222MB (Moore 2222 Lab)
+* Rachel Lin
 
-### (TODO: Your README)
+  * [LinkedIn](https://www.linkedin.com/in/rachel-lin-452834213/)
+  * [personal website](https://www.artstation.com/rachellin4)
+  * [Instagram](https://www.instagram.com/lotus_crescent/)
 
-Include analysis, etc. (Remember, this is public, so don't put
-anything here that you don't want to share with the world.)
+* Tested on: (TODO) Windows 11, 12th Gen Intel(R) Core(TM) i7-12700H @ 2.30GHz, NVIDIA GeForce RTX 3080 Laptop GPU (16 GB)
 
+* Features:
+  * stream compaction on the CPU and GPU
+  * exclusive prefix sum on the CPU and GPU
+  * work-efficient algorithm that avoids race conditions
+  * scanning using thrust library
