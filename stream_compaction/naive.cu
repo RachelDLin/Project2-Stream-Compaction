@@ -19,10 +19,11 @@ namespace StreamCompaction {
             return timer;
         }
         
-        __global__ void naiveParallelScanKernel(int n, int* odata, const int* idata, int k) {
+        __global__ void kernNaiveParallelScan(int n, int* odata, const int* idata, int k) {
             int index = (blockIdx.x * blockDim.x) + threadIdx.x;
 
             if (index < n) {
+                // 2^(d-1)
                 int kernelStart = 1 << (k - 1);
 
                 if (index >= kernelStart) {
@@ -61,7 +62,7 @@ namespace StreamCompaction {
             // for each kernel
             for (int k = 1; k <= ilog2ceil(n); k++) {
                 // call naive scan kernel
-                naiveParallelScanKernel << <fullBlocksPerGrid, blockSize >> > (n, dev_arrB, dev_arrA, k);
+                kernNaiveParallelScan << <fullBlocksPerGrid, blockSize >> > (n, dev_arrB, dev_arrA, k);
                 checkCUDAError("naiveParallelScanKernel failed!");
 
                 // swap array buffers
