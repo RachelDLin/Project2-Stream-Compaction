@@ -1,8 +1,7 @@
 CUDA Stream Compaction
 ======================
 
-**University of Pennsylvania, CIS 565: GPU Programming and Architecture,
-Project 2 - Stream Compaction**
+**University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 2**
 
 * Rachel Lin
 
@@ -18,7 +17,7 @@ Project 2 - Stream Compaction**
   * work-efficient algorithm that avoids race conditions
   * scanning using thrust library
 
-# Description
+## Description
 
 
-# Performance Analysis
+## Performance Analysis
