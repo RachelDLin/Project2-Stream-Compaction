@@ -17,3 +17,8 @@ Project 2 - Stream Compaction**
   * exclusive prefix sum on the CPU and GPU
   * work-efficient algorithm that avoids race conditions
   * scanning using thrust library
+
+# Description
+
+
+# Performance Analysis
