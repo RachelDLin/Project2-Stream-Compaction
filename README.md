@@ -54,19 +54,16 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 | 16777213	| 28.6349	| 13.5973	| 6.175863333	| 1.657173333 | 
 
 #### CPU
-
+This implementation does not involve the GPU at all and is purely single-threaded. This makes it faster for small arrays because no kernel launch is required. However, this algorithm scales poorly with array size compared to the other implementations because it does not take advantage of the multi-threaded approach that the other algorithms do. This approach faces bottlenecks in both memory and computation (it becomes slower as the array size gets large).
 
 #### Naive
-
+This algorithm requires two arrays that are swapped every iteration to avoid race conditions. Since it performs computations in parallel, it scales relatively well compared to the CPU approach. This algorithm is not as optimized as it could be; every iteration, all threads with index less than the stride value are idle. However, the most significant bottleneck comes from the kernel-launch overhead (there are log_2(n) kernels) the redundant computations where some threads re-add elements from the input array. 
 
 #### Work-Efficient
-
+The work-efficient algorithm uses up-sweep to build a sum tree and down-sweep to distribute prefix sums. Sine it opertes in-place, this saves memory. This approach also takes advantage of parallelism on the GPU and uses log_2(n) kernel launches, but each kernel does less extra work because there are fewer redundant computations. This approach still faces a bottleneck through the kernel-launch overhead (still log_2(n) kernels for upsweep and downsweep).
 
 #### Thrust
-
-
-
-### Performance Bottlenecks
+The thrust approach is very fast on large arrays. It may be using shared memory or minimizing the number of idle threads to further optimize the algorithm.
 
 
 
