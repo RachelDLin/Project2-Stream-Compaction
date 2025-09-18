@@ -25,10 +25,10 @@ namespace StreamCompaction {
 
             if (n > 0) {
                 // copy input from host pointer to host vector 
-                thrust::host_vector<int> host_iData(idata, idata + n);
+                //thrust::host_vector<int> host_iData(idata, idata + n);
 
                 // cast as device vector
-                thrust::device_vector<int> dev_iData = host_iData;
+                thrust::device_vector<int> dev_iData(idata, idata + n);
 
                 // device output vector
                 thrust::device_vector<int> dev_oData(n);

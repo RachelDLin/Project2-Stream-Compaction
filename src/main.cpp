@@ -20,6 +20,16 @@ int *b = new int[SIZE];
 int *c = new int[SIZE];
 
 int main(int argc, char* argv[]) {
+    int deviceCount;
+    cudaGetDeviceCount(&deviceCount);
+
+    for (int i = 0; i < deviceCount; i++) {
+        cudaDeviceProp prop;
+        cudaGetDeviceProperties(&prop, i);
+        std::cout << "Device " << i << ": " << prop.name << "\n";
+        std::cout << "Compute capability: " << prop.major << "." << prop.minor << "\n";
+    }
+
     // Scan tests
 
     printf("\n");
