@@ -29,7 +29,7 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 <img src="img/Scan Time vs. Array Size (Power of Two).png" width="50%">
 <img src="img/Scan Time vs. Array Size (Non-Power of Two).png" width="50%">
 
-#### Power of Two
+#### Average Scan Time vs. Array Size (Power of Two)
 
 | Array Size	| CPU	| Naive	| Work-Efficient	| Thrust | 
 | --------- | --------- | --------- | --------- | --------- |
@@ -41,7 +41,7 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 | 4194304	| 7.669166667	| 4.442293333	| 2.438283333	| 0.8376226667 | 
 | 16777216	| 27.9746	| 13.6956	| 6.76686	| 1.431213333 | 
 
-#### Non-Power of Two
+#### Average Scan Time vs. Array Size (Non-Power of Two)
 
 | Array Size	| CPU	| Naive	| Work-Efficient	| Thrust | 
 | --------- | --------- | --------- | --------- | --------- |
