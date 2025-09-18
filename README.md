@@ -26,8 +26,8 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 
 ### Comparison of GPU Scan Implementations
 
-<img src="img/Scan Time vs. Array Size (Power of Two).png" width="70%">
-<img src="img/Scan Time vs. Array Size (Non-Power of Two).png" width="70%">
+<img src="img/Scan Time vs. Array Size (Power of Two).png" width="50%">
+<img src="img/Scan Time vs. Array Size (Non-Power of Two).png" width="50%">
 
 
 ### Performance Bottlenecks
