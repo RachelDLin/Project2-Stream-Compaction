@@ -31,7 +31,7 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 
 #### Power of Two
 
-| Array Size	| CPU	Naive	| Work-Efficient	| Thrust | 
+| Array Size	| CPU	| Naive	| Work-Efficient	| Thrust | 
 | --------- | --------- | --------- | --------- | --------- |
 | 256	| 0.0006	| 0.1969493333	| 0.2730666667	| 0.1140053333 | 
 | 1024	| 0.0018	| 0.2085546667	| 0.41984	| 0.1235733333 | 
