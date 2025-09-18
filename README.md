@@ -53,6 +53,19 @@ This project offers parallel scan and stream compaction algorithms in CUDA. Feat
 | 4194301	| 7.606633333	| 5.455966667	| 3.874946667	| 1.58338 | 
 | 16777213	| 28.6349	| 13.5973	| 6.175863333	| 1.657173333 | 
 
+#### CPU
+
+
+#### Naive
+
+
+#### Work-Efficient
+
+
+#### Thrust
+
+
+
 ### Performance Bottlenecks
 
 
